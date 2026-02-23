@@ -1,12 +1,13 @@
-import { pgTable, serial, text, varchar, boolean } from "drizzle-orm/pg-core";
+import { pgTable, text, boolean, timestamp } from "drizzle-orm/pg-core";
 
-const users = pgTable("users", {
-  id: serial("id").primaryKey(),
-  fullName: text("full_name"),
-  phone: varchar("phone", { length: 256 }),
-  password: varchar("password", { length: 256 }),
-  isActive: boolean("is_active").default(true),
-  role: text("role").default("user"),
+const user = pgTable("user", {
+  id: text("id").primaryKey(),
+  name: text("name"),
+  email: text("email").unique().notNull(),
+  emailVerified: boolean("email_verified").default(false),
+  image: text("image"),
+  createdAt: timestamp("created_at").defaultNow(),
+  updatedAt: timestamp("updated_at").defaultNow(),
 });
 
-export { users };
+export { user };

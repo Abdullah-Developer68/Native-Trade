@@ -1,0 +1,8 @@
+export default function OrdersPage() {
+  return (
+    <section className="space-y-2">
+      <h2 className="text-2xl font-semibold tracking-tight">Orders</h2>
+      <p className="text-muted-foreground">Track active, completed, and pending orders here.</p>
+    </section>
+  );
+}
